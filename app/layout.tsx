@@ -1,50 +1,29 @@
-import type { Metadata } from "next";
-import { Manrope } from "next/font/google";
-import "./globals.css";
-import { Toaster } from "@/components/ui/sonner";
-import { ThemeProvider } from "@/components/themeprovider";
-import Footer from "@/components/Footer";
+// File location: ./app/layout.tsx
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import './globals.css';
+import { WalletConnectionProvider } from '../components/WalletConnection';
 
-const manrope = Manrope({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: "Kosh",
-  description: "Your Personal Web3 Wallet.",
-  icons: [
-    {
-      rel: "icon",
-      type: "image/x-icon",
-      url: "/favicon-light.ico",
-      media: "(prefers-color-scheme: light)",
-    },
-    {
-      rel: "icon",
-      type: "image/png",
-      url: "/favicon-dark.ico",
-      media: "(prefers-color-scheme: dark)",
-    },
-  ],
+  title: 'DeFi AI Assistant',
+  description: 'AI-powered DeFi transaction optimizer',
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body className={`${manrope.className}`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Toaster />
-
-          {children}
-          <Footer />
-        </ThemeProvider>
+      <body className={inter.className}>
+        <WalletConnectionProvider>
+          <div className="container mx-auto px-4 py-8">
+            {children}
+          </div>
+        </WalletConnectionProvider>
       </body>
     </html>
   );
