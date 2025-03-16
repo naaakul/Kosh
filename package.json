@@ -9,7 +9,7 @@
     "move:publish": "node ./scripts/move/publish && node ./scripts/move/get_abi",
     "move:upgrade": "node ./scripts/move/upgrade && node ./scripts/move/get_abi",
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm install --legacy-peer-deps && next build",
     "start": "next start",
     "deploy": "vercel",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
