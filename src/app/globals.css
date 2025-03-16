@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -67,11 +68,18 @@
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+.bg-fir{
+  background-color: #E7E0D6;
+}
+
+.bg-sec{
+  background-color: #0D2789;
+}
+
+.text-fir{
+  color: #E7E0D6;
+}
+
+.text-sec{
+   color: #0D2789;
 }
