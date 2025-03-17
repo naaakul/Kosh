@@ -1,9 +1,9 @@
 "use client";
 
 import { AccountInfo } from "@/components/AccountInfo";
-import { Header } from "@/components/Header";
-import { MessageBoard } from "@/components/MessageBoard";
-import { NetworkInfo } from "@/components/NetworkInfo";
+import { Header } from "../../components/Header";
+import { MessageBoard } from "../../components/MessageBoard";
+import { NetworkInfo } from "../../components/NetworkInfo";
 import { TopBanner } from "@/components/TopBanner";
 import { TransferAPT } from "@/components/TransferAPT";
 import { WalletDetails } from "@/components/WalletDetails";
