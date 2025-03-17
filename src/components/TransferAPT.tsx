@@ -5,12 +5,12 @@ import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useWalletClient } from "@thalalabs/surf/hooks";
 // Internal components
-import { toast } from "@/components/ui/use-toast";
-import { aptosClient } from "@/utils/aptosClient";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { getAccountAPTBalance } from "@/view-functions/getAccountBalance";
-import { COIN_ABI } from "@/utils/coin_abi";
+import { toast } from "../components/ui/use-toast";
+import { aptosClient } from "../utils/aptosClient";
+import { Button } from "../components/ui/button";
+import { Input } from "../components/ui/input";
+import { getAccountAPTBalance } from "../view-functions/getAccountBalance";
+import { COIN_ABI } from "../utils/coin_abi";
 
 export function TransferAPT() {
   const { account } = useWallet();
