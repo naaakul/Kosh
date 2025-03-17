@@ -21,6 +21,7 @@
     "@aptos-labs/wallet-adapter-react": "^4.1.0",
     "@ducanh2912/next-pwa": "^10.2.9",
     "@initia/react-wallet-widget": "^1.1.0",
+    "@initia/wallet-widget": "^1.1.0",
     "@mizuwallet-sdk/core": "^1.4.0",
     "@radix-ui/react-collapsible": "^1.1.0",
     "@radix-ui/react-dialog": "^1.1.1",
