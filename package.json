@@ -47,12 +47,13 @@
     "react-router-dom": "^6.23.1",
     "tailwind-merge": "^2.3.0",
     "tailwindcss": "^3.4.3",
-    "tailwindcss-animate": "^1.0.7"
-  },
-  "devDependencies": {
     "@types/node": "^20.14.1",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
+    "typescript": "^5.2.2",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
     "dotenv": "16.3.1",
@@ -61,7 +62,6 @@
     "eslint-plugin-react-refresh": "^0.4.6",
     "prettier": "^3.3.2",
     "tree-kill": "1.2.2",
-    "typescript": "^5.2.2",
     "vercel": "^35.2.4"
   }
 }
