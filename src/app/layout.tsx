@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import "./globals.css";
-import { ReactQueryProvider } from "@/components/ReactQueryProvider";
-import { WalletProvider } from "@/components/WalletProvider";
-import { Toaster } from "@/components/ui/toaster";
-import { WrongNetworkAlert } from "@/components/WrongNetworkAlert";
+import { ReactQueryProvider } from "../components/ReactQueryProvider";
+import { WalletProvider } from "../components/WalletProvider";
+import { Toaster } from "../components/ui/toaster";
+import { WrongNetworkAlert } from "../components/WrongNetworkAlert";
 
 
 export const metadata: Metadata = {
