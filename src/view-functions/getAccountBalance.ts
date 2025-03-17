@@ -1,5 +1,5 @@
-import { surfClient } from "@/utils/surfClient";
-import { COIN_ABI } from "@/utils/coin_abi";
+import { surfClient } from "../utils/surfClient";
+import { COIN_ABI } from "../utils/coin_abi";
 
 export type AccountAPTBalanceArguments = {
   accountAddress: string;

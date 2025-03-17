@@ -1,5 +1,5 @@
-import { surfClient } from "@/utils/surfClient";
-import { MESSAGE_BOARD_ABI } from "@/utils/message_board_abi";
+import { surfClient } from "../utils/surfClient";
+import { MESSAGE_BOARD_ABI } from "../utils/message_board_abi";
 
 export const getMessageContent = async (): Promise<string> => {
   const content = await surfClient()
