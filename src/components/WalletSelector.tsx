@@ -25,7 +25,6 @@ import {
   type AboutAptosConnectEducationScreen,
   AdapterWallet,
   AdapterNotDetectedWallet,
-  AptosPrivacyPolicy,
   WalletItem,
   groupAndSortWallets,
   isAptosConnectWallet,
