@@ -7,11 +7,16 @@ import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
 
-const AccountInfo = dynamic(() => import("../../components/AccountInfo"), { ssr: false });
-const NetworkInfo = dynamic(() => import("../../components/NetworkInfo"), { ssr: false });
-const TransferAPT = dynamic(() => import("../../components/TransferAPT"), { ssr: false });
-const WalletDetails = dynamic(() => import("../../components/WalletDetails"), { ssr: false });
-const MessageBoard = dynamic(() => import("../../components/MessageBoard"), { ssr: false });
+const AccountInfo = dynamic(() => import("../../components/AccountInfo").then(mod => mod.default), 
+  { ssr: false, loading: () => <p>Loading...</p> });
+const NetworkInfo = dynamic(() => import("../../components/NetworkInfo").then(mod => mod.default), 
+  { ssr: false, loading: () => <p>Loading...</p> });
+const TransferAPT = dynamic(() => import("../../components/TransferAPT").then(mod => mod.default), 
+  { ssr: false, loading: () => <p>Loading...</p> });
+const WalletDetails = dynamic(() => import("../../components/WalletDetails").then(mod => mod.default), 
+  { ssr: false, loading: () => <p>Loading...</p> });
+const MessageBoard = dynamic(() => import("../../components/MessageBoard").then(mod => mod.default), 
+  { ssr: false, loading: () => <p>Loading...</p> });
 
 function Page() {
   const { connected } = useWallet();
