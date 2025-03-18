@@ -4,7 +4,7 @@ import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { DisplayValue, LabelValueGrid } from "../components/LabelValueGrid";
 import { isValidNetworkName } from "../utils/helpers";
 
-export function NetworkInfo() {
+export default function NetworkInfo() {
   const { network } = useWallet();
   return (
     <div className="flex flex-col gap-6">

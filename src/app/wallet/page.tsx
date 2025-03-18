@@ -1,20 +1,20 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { AccountInfo } from "../../components/AccountInfo";
 import { Header } from "../../components/Header";
-import { MessageBoard } from "../../components/MessageBoard";
-import { NetworkInfo } from "../../components/NetworkInfo";
-import { TransferAPT } from "../../components/TransferAPT";
-import { WalletDetails } from "../../components/WalletDetails";
-// Internal Components
-import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
+import dynamic from 'next/dynamic';
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { useEffect } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
+
+const AccountInfo = dynamic(() => import("../../components/AccountInfo"), { ssr: false });
+const NetworkInfo = dynamic(() => import("../../components/NetworkInfo"), { ssr: false });
+const TransferAPT = dynamic(() => import("../../components/TransferAPT"), { ssr: false });
+const WalletDetails = dynamic(() => import("../../components/WalletDetails"), { ssr: false });
+const MessageBoard = dynamic(() => import("../../components/MessageBoard"), { ssr: false });
 
 function Page() {
   const { connected } = useWallet();
-
   const router = useRouter();
 
   useEffect(() => {

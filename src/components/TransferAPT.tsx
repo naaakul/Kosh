@@ -12,7 +12,7 @@ import { Input } from "../components/ui/input";
 import { getAccountAPTBalance } from "../view-functions/getAccountBalance";
 import { COIN_ABI } from "../utils/coin_abi";
 
-export function TransferAPT() {
+export default function TransferAPT() {
   const { account } = useWallet();
   const { client } = useWalletClient();
 

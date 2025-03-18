@@ -11,7 +11,7 @@ import { Input } from "../components/ui/input";
 import { getMessageContent } from "../view-functions/getMessageContent";
 import { MESSAGE_BOARD_ABI } from "../utils/message_board_abi";
 
-export function MessageBoard() {
+export default function MessageBoard() {
   const { client } = useWalletClient();
 
   const queryClient = useQueryClient();

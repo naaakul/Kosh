@@ -2,7 +2,7 @@ import { useWallet } from "@aptos-labs/wallet-adapter-react";
 // Internal components
 import { LabelValueGrid, DisplayValue } from "../components/LabelValueGrid";
 
-export function AccountInfo() {
+export default function AccountInfo() {
   const { account } = useWallet();
   return (
     <div className="flex flex-col gap-6">
