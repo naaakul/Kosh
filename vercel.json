@@ -1,0 +1,7 @@
+{
+  "routes": [
+    { "src": "/_next/static/chunks/([^/]+)", "dest": "/_next/static/chunks/$1" },
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
+}

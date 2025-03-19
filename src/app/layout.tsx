@@ -9,7 +9,6 @@ import { Gabarito } from "next/font/google";
 
 const gabarito = Gabarito({ subsets: ["latin"], weight: ["400", "500", "800"] });
 
-
 export const metadata: Metadata = {
   applicationName: "Aptos Boilerplate Template",
   title: "NextJS Boilerplate Template",
@@ -17,11 +16,7 @@ export const metadata: Metadata = {
   manifest: "/manifest.json",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={gabarito.className}>
       <body className="bg-fir select-none">
@@ -32,6 +27,18 @@ export default function RootLayout({
             <Toaster />
           </ReactQueryProvider>
         </WalletProvider>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.addEventListener('error', function(e) {
+                if (e.message.includes('ChunkLoadError') || e.error && e.error.message && e.error.message.includes('ChunkLoadError')) {
+                  console.log('Chunk load error detected, refreshing page...');
+                  window.location.reload();
+                }
+              });
+            `,
+          }}
+        />
       </body>
     </html>
   );
