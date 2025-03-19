@@ -8,6 +8,9 @@ export default withPWA({
   output: "export",
   distDir: "./dist",
   basePath: process.env.NEXT_PUBLIC_BASE_PATH,
-  images: { unoptimized: true },
-  trailingSlash: true,
+  swcMinify: true,
+  experimental: {
+    optimizeCss: true,
+    optimizePackageImports: ['@aptos-labs/wallet-adapter-react']
+  }
 });
