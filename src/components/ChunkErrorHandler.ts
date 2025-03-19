@@ -4,7 +4,14 @@ import { useEffect } from 'react';
 
 export default function ChunkErrorHandler() {
   useEffect(() => {
-    const handleChunkError = (event) => {
+    interface ErrorEvent {
+      message?: string;
+      error?: {
+        message?: string;
+      };
+    }
+
+    const handleChunkError = (event: ErrorEvent): void => {
       if (
         event.message?.includes('ChunkLoadError') || 
         (event.error && event.error.message && event.error.message.includes('ChunkLoadError'))
