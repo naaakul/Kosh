@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { Header } from "../../components/Header";
-import dynamic from "next/dynamic";
+// import dynamic from "next/dynamic";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
@@ -42,19 +42,14 @@ function Page() {
   useEffect(() => {
     async function loadComponents() {
       try {
-        const [
-          AccountInfoModule,
-          NetworkInfoModule,
-          TransferAPTModule,
-          WalletDetailsModule,
-          MessageBoardModule,
-        ] = await Promise.all([
-          import("../../components/AccountInfo"),
-          import("../../components/NetworkInfo"),
-          import("../../components/TransferAPT"),
-          import("../../components/WalletDetails"),
-          import("../../components/MessageBoard"),
-        ]);
+        const [AccountInfoModule, NetworkInfoModule, TransferAPTModule, WalletDetailsModule, MessageBoardModule] =
+          await Promise.all([
+            import("../../components/AccountInfo"),
+            import("../../components/NetworkInfo"),
+            import("../../components/TransferAPT"),
+            import("../../components/WalletDetails"),
+            import("../../components/MessageBoard"),
+          ]);
 
         setComponents({
           AccountInfo: AccountInfoModule.default,
@@ -71,6 +66,17 @@ function Page() {
 
     loadComponents();
   }, []);
+
+  if (!loaded) {
+    return (
+      <>
+        <Header />
+        <div className="flex items-center justify-center h-screen">
+          <p>Loading...</p>
+        </div>
+      </>
+    );
+  }
 
   const { AccountInfo, NetworkInfo, TransferAPT, WalletDetails, MessageBoard } = components;
 
