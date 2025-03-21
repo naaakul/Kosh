@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { useEffect, useRef } from "react";
+import { motion } from "motion/react";
 
 const Bg = () => {
   const pathRef = useRef<SVGPathElement>(null);
@@ -52,7 +53,10 @@ const Bg = () => {
   }, []);
 
   return (
-    <svg
+    <motion.svg
+      initial={{ y: -5, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
       className="size-[1550px] -top-64 pointer-events-none absolute z-10"
       width="1280"
       height="830"
@@ -67,7 +71,7 @@ const Bg = () => {
         stroke-opacity="0.05"
         stroke-width="12"
       />
-    </svg>
+    </motion.svg>
   );
 };
 
