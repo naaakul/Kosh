@@ -7,6 +7,7 @@ import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
 import ChunkErrorHandler from "../../components/ChunkErrorHandler";
+import Optimize from "@/components/Optimize";
 
 // const AccountInfo = dynamic(() => import("../../components/AccountInfo").then((mod) => mod), { ssr: false });
 // const NetworkInfo = dynamic(() => import("../../components/NetworkInfo").then((mod) => mod), { ssr: false });
@@ -85,7 +86,7 @@ function Page() {
       <ChunkErrorHandler />
       <Header />
       <div className="flex items-center justify-center flex-col">
-        {connected ? (
+        {connected ? (<>
           <Card>
             <CardContent className="flex flex-col gap-10 pt-6">
               {WalletDetails && <WalletDetails />}
@@ -93,8 +94,10 @@ function Page() {
               {AccountInfo && <AccountInfo />}
               {TransferAPT && <TransferAPT />}
               {MessageBoard && <MessageBoard />}
+          <Optimize/>
             </CardContent>
           </Card>
+        </>
         ) : (
           <CardHeader>
             <CardTitle>To get started Connect a wallet</CardTitle>
