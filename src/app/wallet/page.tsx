@@ -24,13 +24,11 @@ function Page() {
     NetworkInfo: (() => JSX.Element) | null;
     TransferAPT: (() => JSX.Element) | null;
     WalletDetails: (() => JSX.Element) | null;
-    MessageBoard: (() => JSX.Element) | null;
   }>({
     AccountInfo: null,
     NetworkInfo: null,
     TransferAPT: null,
     WalletDetails: null,
-    MessageBoard: null,
   });
   const [loaded, setLoaded] = useState(false);
 
@@ -43,7 +41,7 @@ function Page() {
   useEffect(() => {
     async function loadComponents() {
       try {
-        const [AccountInfoModule, NetworkInfoModule, TransferAPTModule, WalletDetailsModule, MessageBoardModule] =
+        const [AccountInfoModule, NetworkInfoModule, TransferAPTModule, WalletDetailsModule] =
           await Promise.all([
             import("../../components/AccountInfo"),
             import("../../components/NetworkInfo"),
@@ -57,7 +55,6 @@ function Page() {
           NetworkInfo: NetworkInfoModule.default,
           TransferAPT: TransferAPTModule.default,
           WalletDetails: WalletDetailsModule.default,
-          MessageBoard: MessageBoardModule.default,
         });
         setLoaded(true);
       } catch (error) {
@@ -79,25 +76,25 @@ function Page() {
     );
   }
 
-  const { AccountInfo, NetworkInfo, TransferAPT, WalletDetails, MessageBoard } = components;
+  const { AccountInfo, NetworkInfo, TransferAPT, WalletDetails } = components;
 
   return (
     <>
       <ChunkErrorHandler />
       <Header />
       <div className="flex items-center justify-center flex-col">
-        {connected ? (<>
-          <Card>
-            <CardContent className="flex flex-col gap-10 pt-6">
-              {WalletDetails && <WalletDetails />}
-              {NetworkInfo && <NetworkInfo />}
-              {AccountInfo && <AccountInfo />}
-              {TransferAPT && <TransferAPT />}
-              {MessageBoard && <MessageBoard />}
-          <Optimize/>
-            </CardContent>
-          </Card>
-        </>
+        {connected ? (
+          <>
+            <Card>
+              <CardContent className="flex flex-col gap-10 pt-6">
+                {WalletDetails && <WalletDetails />}
+                {NetworkInfo && <NetworkInfo />}
+                {AccountInfo && <AccountInfo />}
+                {TransferAPT && <TransferAPT />}
+                <Optimize />
+              </CardContent>
+            </Card>
+          </>
         ) : (
           <CardHeader>
             <CardTitle>To get started Connect a wallet</CardTitle>

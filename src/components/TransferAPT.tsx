@@ -2,25 +2,15 @@
 
 import { useEffect, useState } from "react";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { useWalletClient } from "@thalalabs/surf/hooks";
+import { useQuery } from "@tanstack/react-query";
 // Internal components
 import { toast } from "../components/ui/use-toast";
-import { aptosClient } from "../utils/aptosClient";
-import { Button } from "../components/ui/button";
-import { Input } from "../components/ui/input";
 import { getAccountAPTBalance } from "../view-functions/getAccountBalance";
-import { COIN_ABI } from "../utils/coin_abi";
 
 export default function TransferAPT() {
   const { account } = useWallet();
-  const { client } = useWalletClient();
-
-  const queryClient = useQueryClient();
 
   const [aptBalance, setAptBalance] = useState<number>(0);
-  const [recipient, setRecipient] = useState<string>();
-  const [transferAmount, setTransferAmount] = useState<number>();
 
   const { data } = useQuery({
     queryKey: ["apt-balance", account?.address],
@@ -49,31 +39,6 @@ export default function TransferAPT() {
     },
   });
 
-  const onClickButton = async () => {
-    if (!client || !recipient || !transferAmount) {
-      return;
-    }
-
-    try {
-      const committedTransaction = await client.useABI(COIN_ABI).transfer({
-        type_arguments: ["0x1::aptos_coin::AptosCoin"],
-        arguments: [recipient as `0x${string}`, Math.pow(10, 8) * transferAmount],
-      });
-      const executedTransaction = await aptosClient().waitForTransaction({
-        transactionHash: committedTransaction.hash,
-      });
-      queryClient.invalidateQueries({
-        queryKey: ["apt-balance", account?.address],
-      });
-      toast({
-        title: "Success",
-        description: `Transaction succeeded, hash: ${executedTransaction.hash}`,
-      });
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   useEffect(() => {
     if (data) {
       setAptBalance(data.balance);
@@ -83,7 +48,7 @@ export default function TransferAPT() {
   return (
     <div className="flex flex-col gap-6">
       <h4 className="text-lg font-medium">APT balance: {aptBalance / Math.pow(10, 8)}</h4>
-      Recipient <Input disabled={!account} placeholder="0x1" onChange={(e) => setRecipient(e.target.value)} />
+      {/* Recipient <Input disabled={!account} placeholder="0x1" onChange={(e) => setRecipient(e.target.value)} />
       Amount{" "}
       <Input disabled={!account} placeholder="100" onChange={(e) => setTransferAmount(parseFloat(e.target.value))} />
       <Button
@@ -91,7 +56,7 @@ export default function TransferAPT() {
         onClick={onClickButton}
       >
         Transfer
-      </Button>
+      </Button> */}
     </div>
   );
 }
